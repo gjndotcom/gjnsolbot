@@ -6,11 +6,12 @@ from aiogram.filters import Command
 from aiogram.client.default import DefaultBotProperties
 
 API_TOKEN = '8034735329:AAE8U2E1Jso6PBppVkLcMgc4crGp5eHvXwM'
-if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
-# ✅ Sửa ở đây: Dùng DefaultBotProperties
-bot = Bot(token=API_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN))
+
+# ✅ Bot với default parse_mode
+bot = Bot(
+    token=API_TOKEN,
+    default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN)
+)
 dp = Dispatcher()
 
 @dp.message(Command("start"))
@@ -46,8 +47,10 @@ async def start_handler(message: types.Message):
 async def handle_callback(callback: types.CallbackQuery):
     await callback.answer(f"You clicked: {callback.data}", show_alert=True)
 
+# ✅ Định nghĩa đúng main()
 async def main():
     await dp.start_polling(bot)
 
+# ✅ Gọi đúng main()
 if __name__ == "__main__":
     asyncio.run(main())
