@@ -6,7 +6,9 @@ from aiogram.filters import Command
 from aiogram.client.default import DefaultBotProperties
 
 API_TOKEN = '8034735329:AAE8U2E1Jso6PBppVkLcMgc4crGp5eHvXwM'
-
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())
 # ✅ Sửa ở đây: Dùng DefaultBotProperties
 bot = Bot(token=API_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN))
 dp = Dispatcher()
